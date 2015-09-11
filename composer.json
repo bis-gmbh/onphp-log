@@ -21,6 +21,12 @@
     }
   ],
   "minimum-stability": "dev",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/bis-gmbh/onphp-framework"
+    }
+  ],
   "require": {
     "php": ">=5.4.0",
     "bis-gmbh/onphp": "dev-masterNs"
