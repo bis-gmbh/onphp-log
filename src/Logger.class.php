@@ -5,10 +5,6 @@
  ***************************************************************************/
 /* $Id: Logger.class.php 1069 2008-12-08 15:24:34Z hate $ */
 
-	namespace Onphp\Log;
-
-	use \Onphp\Singleton;
-
 	abstract class Logger extends Singleton
 	{
 		abstract public function save(LoggerMessage $message);

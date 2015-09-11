@@ -5,15 +5,6 @@
  ***************************************************************************/
 /* $Id: LogManager.class.php 1069 2008-12-08 15:24:34Z hate $ */
 
-	namespace Onphp\Log;
-
-	use \Onphp\StaticFactory;
-	use \Onphp\Assert;
-	use \Exception;
-	use \Onphp\HttpRequest;
-	use \Onphp\Mail;
-	use \Onphp\UnimplementedFeatureException;
-
 	final class LogManager extends StaticFactory
 	{
 		/** @var Logger $logger */

@@ -5,11 +5,6 @@
  ***************************************************************************/
 /* $Id: LoggerMessage.class.php 1069 2008-12-08 15:24:34Z hate $ */
 
-	namespace Onphp\Log;
-
-	use \Onphp\Timestamp;
-	use \Onphp\Assert;
-
 	final class LoggerMessage
 	{
 		private $message 	= null;

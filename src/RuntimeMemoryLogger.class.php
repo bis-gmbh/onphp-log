@@ -5,11 +5,6 @@
  ***************************************************************************/
 /* $Id: RuntimeMemoryLogger.class.php 1069 2008-12-08 15:24:34Z hate $ */
 
-	namespace Onphp\Log;
-
-	use \Onphp\Singleton;
-	use \Onphp\Format;
-
 	class RuntimeMemoryLogger extends Logger
 	{
 		private static $log = array();
@@ -34,7 +29,7 @@
 					isset($oneCall['class'])
 					&& (
 						($oneCall['class'] == get_class($this))
-						|| ($oneCall['class'] == '\Onphp\Log\LogManager')
+						|| ($oneCall['class'] == 'LogManager')
 					)
 				) {
 					$file = $oneCall['file'];

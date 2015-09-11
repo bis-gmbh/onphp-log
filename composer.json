@@ -29,11 +29,11 @@
   ],
   "require": {
     "php": ">=5.4.0",
-    "bis-gmbh/onphp": "dev-masterNs"
+    "bis-gmbh/onphp": "dev-1.0"
   },
   "autoload": {
-    "psr-4": {
-      "Onphp\\Log\\": "src/"
-    }
+    "classmap": [
+      "src/"
+    ]
   }
 }
