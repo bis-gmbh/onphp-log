@@ -1,0 +1,33 @@
+{
+  "name": "bis-gmbh/onphp-log",
+  "description": "Onphp Log Package",
+  "keywords": ["onphp", "log"],
+  "license": "BSD-3-Clause",
+  "authors": [
+    {
+      "name": "Dmitry Nezhelskoy",
+      "email": "dmitry@nezhelskoy.pro",
+      "role": "Maintainer and Developer"
+    },
+    {
+      "name": "Denis Gabaidulin",
+      "email": "sherman@oemdesign.ru",
+      "role": "Developer"
+    },
+    {
+      "name": "Dmitry Demidov",
+      "email": "Dmitry.Demidov@noussoft.com",
+      "role": "Developer"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.4.0",
+    "bis-gmbh/onphp": "dev-masterNs"
+  },
+  "autoload": {
+    "psr-4": {
+      "Onphp\\Log\\": "src/"
+    }
+  }
+}
