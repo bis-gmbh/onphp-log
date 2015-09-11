@@ -4,27 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4a95c5b768ced1a7b22d4ed9213c1986",
+    "hash": "d46f9e42ca9628d304371980dcd55479",
     "packages": [
         {
             "name": "bis-gmbh/onphp",
-            "version": "dev-masterNs",
+            "version": "1.0.10.99",
             "source": {
                 "type": "git",
-                "url": "https://github.com/bis-gmbh/onphp-framework.git",
-                "reference": "bb382450c12370186b03efff9cb55a349f42c106"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/bis-gmbh/onphp-framework/zipball/bb382450c12370186b03efff9cb55a349f42c106",
-                "reference": "bb382450c12370186b03efff9cb55a349f42c106",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "conflict": {
-                "ext-http": "*"
+                "url": "https://github.com/bis-gmbh/onphp-framework",
+                "reference": "d6eac4e849d722606bb679d32c80194627cf3a87"
             },
             "type": "library",
             "autoload": {
@@ -33,35 +21,13 @@
                     "main/",
                     "meta/"
                 ]
-            },
-            "license": [
-                "GPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "Konstantin Arkhipov"
-                },
-                {
-                    "name": "Anton Lebedevich"
-                }
-            ],
-            "description": "onPHP is the mature GPL'ed multi-purpose object-oriented PHP framework.",
-            "homepage": "https://github.com/bis-gmbh/onphp-framework",
-            "keywords": [
-                "framework"
-            ],
-            "support": {
-                "source": "https://github.com/bis-gmbh/onphp-framework/tree/masterNs"
-            },
-            "time": "2015-06-26 09:50:19"
+            }
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "bis-gmbh/onphp": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
