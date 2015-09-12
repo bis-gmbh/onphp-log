@@ -32,7 +32,8 @@
   },
   "autoload": {
     "psr-4": {
-      "Onphp\\Log\\": "src/"
+      "Onphp\\Log\\": "src/",
+      "Onphp\\Log\\Examples\\": "examples/"
     }
   }
 }
