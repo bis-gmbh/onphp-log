@@ -24,9 +24,5 @@ require PATH_VENDOR . 'autoload.php';
 // onPHP init
 require PATH_ONPHP . 'global.inc.php.tpl';
 
-\Onphp\Log\LogManager::setLogger(
-    \Onphp\Log\RuntimeMemoryLogger::me()
-);
-
 define('__LOCAL_DEBUG__', true);
 define('BUGLOVERS', 'mailbox@example.net');

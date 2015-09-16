@@ -10,6 +10,10 @@ use \Onphp\RouterTransparentRule;
 use \Onphp\RouterUrlHelper;
 use \Onphp\HeaderUtils;
 use \Onphp\RedirectToView;
+use \Onphp\Log\LoggerInstance;
+use \Onphp\Log\Target\EchoTarget;
+use \Onphp\Log\Informer\SessionInformer;
+use \Onphp\Log\Informer\ExceptionInformer;
 
 require '../config.inc.php';
 
@@ -84,13 +88,16 @@ try {
 
     $view->render($model);
 
-    echo '<pre>'.\Onphp\Log\LogManager::getSessionTextLog().'</pre>';
+    $logger = new LoggerInstance('runtime');
+    $logger->addTarget(new EchoTarget());
+    $logger->addInformer(new SessionInformer());
+    echo '<pre>'.$logger->info().'</pre>';
 
 } catch (Exception $e) {
-    \Onphp\Log\LogManager::saveException($e);
+    $logger->addInformer(new ExceptionInformer());
 
     if (__LOCAL_DEBUG__) {
-        echo '<pre>'.\Onphp\Log\LogManager::getSessionTextLog().'</pre>';
+        echo '<pre>'.$logger->error().'</pre>';
     }
     else {
         if (!HeaderUtils::redirectBack()) {
