@@ -11,11 +11,14 @@ use \Onphp\RouterUrlHelper;
 use \Onphp\HeaderUtils;
 use \Onphp\RedirectToView;
 use \Onphp\Log\LoggerInstance;
-use \Onphp\Log\Target\EchoTarget;
-use \Onphp\Log\Informer\SessionInformer;
+use \Onphp\Log\Target\RuntimeMemoryTarget;
 use \Onphp\Log\Informer\ExceptionInformer;
+use \Onphp\Log\Informer\HttpRequestInformer;
 
 require '../config.inc.php';
+
+$logger = new LoggerInstance('runtime');
+$logger->addTarget(new RuntimeMemoryTarget());
 
 try {
     $request =
@@ -25,8 +28,6 @@ try {
         setCookie($_COOKIE)->
         setServer($_SERVER)->
         setFiles($_FILES);
-
-    \Onphp\Log\LogManager::saveRequest($request);
 
     $controllerName = 'index';
 
@@ -88,16 +89,15 @@ try {
 
     $view->render($model);
 
-    $logger = new LoggerInstance('runtime');
-    $logger->addTarget(new EchoTarget());
-    $logger->addInformer(new SessionInformer());
-    echo '<pre>'.$logger->info().'</pre>';
+    $logger->addInformer(new HttpRequestInformer($request));
+    // throw new Exception('Test exception');
+    $logger->info('Test info');
 
 } catch (Exception $e) {
-    $logger->addInformer(new ExceptionInformer());
+    $logger->addInformer(new ExceptionInformer($e), LoggerInstance::INSERT_TO_BEGIN);
 
     if (__LOCAL_DEBUG__) {
-        echo '<pre>'.$logger->error().'</pre>';
+        $logger->error('Exception throwed');
     }
     else {
         if (!HeaderUtils::redirectBack()) {
