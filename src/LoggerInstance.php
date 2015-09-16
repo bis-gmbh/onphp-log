@@ -76,8 +76,8 @@ class LoggerInstance extends AbstractLogger implements LoggerInstanceInterface
         );
         $datetime->setTimezone(static::$timezone);
 
-        $context['meta']['logger']   = $this->name;
-        $context['meta']['datetime'] = $datetime;
+        $context['meta']['loggerName'] = $this->name;
+        $context['meta']['datetimeObject'] = $datetime;
 
         $record = [
             'datetime' => $datetime->format('Y-m-d H:i:s'),
