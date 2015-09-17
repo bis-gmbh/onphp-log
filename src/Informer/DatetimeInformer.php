@@ -5,8 +5,6 @@
 
 namespace Onphp\Log\Informer;
 
-use \Onphp\Log\InvalidConfigurationException;
-
 /**
  * Class DatetimeInformer
  * @package Onphp\Log\Informer

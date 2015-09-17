@@ -6,7 +6,6 @@
 namespace Onphp\Log\Informer;
 
 use \Onphp\HttpRequest;
-use \Onphp\Log\InvalidConfigurationException;
 
 /**
  * Class HttpRequestInformer

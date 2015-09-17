@@ -5,8 +5,6 @@
 
 namespace Onphp\Log\Decorator;
 
-use \Onphp\Log\Informer\DatetimeInformer;
-
 /**
  * Class RuntimeMemoryDecorator
  * @package Onphp\Log\Decorator
