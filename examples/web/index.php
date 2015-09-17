@@ -22,6 +22,8 @@ require '../config.inc.php';
 $logger = new LoggerInstance('runtime');
 $logger->addTarget(new EchoTarget(new RuntimeMemoryDecorator()));
 $logger->addInformer(new DatetimeInformer());
+$logger->addInformer(new HttpRequestInformer());
+$logger->addInformer(new ExceptionInformer());
 
 try {
     $request =
@@ -92,15 +94,13 @@ try {
 
     $view->render($model);
 
-    $logger->addInformer(new HttpRequestInformer($request));
-    // throw new Exception('Test exception');
-    $logger->info('Test info');
+    $logger->info('Test info', ['httprequest' => $request]);
+
+    //throw new Exception('Test exception');
 
 } catch (Exception $e) {
-    $logger->addInformer(new ExceptionInformer($e));
-
     if (__LOCAL_DEBUG__) {
-        $logger->error('Exception throwed');
+        $logger->error('Exception throwed', ['exception' => $e]);
     }
     else {
         if (!HeaderUtils::redirectBack()) {
