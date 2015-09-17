@@ -34,7 +34,7 @@ class RuntimeMemoryTarget implements TargetInterface
                 $line = $oneCall['line'];
 
                 $record['message'] = $file . "($line)" 
-                    . "\n\nDate: " . $record['datetime']
+//                    . "\n\nDate: " . $record['datetime']
                     . "\n\nMessage: " . $record['message'] . "\n\n";
 
                 break;

@@ -9,7 +9,6 @@ use \Psr\Log\AbstractLogger;
 use \Onphp\Log\Target\TargetInterface;
 use \Onphp\Log\Target\DummyTarget;
 use \Onphp\Log\Informer\InformerInterface;
-use \Onphp\Log\Informer\DummyInformer;
 
 /**
  * Class LoggerInstance
@@ -17,11 +16,6 @@ use \Onphp\Log\Informer\DummyInformer;
  */
 class LoggerInstance extends AbstractLogger implements LoggerInstanceInterface
 {
-    /**
-     * @var \DateTimeZone
-     */
-    protected static $timezone;
-
     /**
      * @var string
      */
@@ -61,19 +55,9 @@ class LoggerInstance extends AbstractLogger implements LoggerInstanceInterface
             $this->addTarget(new DummyTarget());
         }
 
-        if ( ! static::$timezone) {
-            static::$timezone = new \DateTimeZone(date_default_timezone_get() ?: 'UTC');
-        }
-        $datetime = \DateTime::createFromFormat(
-            'U.u', sprintf('%.6F', microtime(true)), static::$timezone
-        );
-        $datetime->setTimezone(static::$timezone);
-
         $context['meta']['loggerName'] = $this->name;
-        $context['meta']['datetimeObject'] = $datetime;
 
         $record = [
-            'datetime' => $datetime->format('Y-m-d H:i:s'),
             'level'    => strtoupper($level),
             'message'  => $message,
             'context'  => $context,
