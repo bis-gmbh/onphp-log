@@ -5,11 +5,13 @@
 
 namespace Onphp\Log\Informer;
 
+use \Onphp\Log\InvalidConfigurationException;
+
 /**
  * Class ExceptionInformer
  * @package Onphp\Log\Informer
  */
-class ExceptionInformer implements InformerInterface
+class ExceptionInformer extends AbstractInformer
 {
     /**
      * @var \Exception
@@ -21,6 +23,7 @@ class ExceptionInformer implements InformerInterface
      */
     public function __construct(\Exception $e)
     {
+        $this->name = 'exception';
         $this->setException($e);
     }
 
@@ -35,18 +38,22 @@ class ExceptionInformer implements InformerInterface
     }
 
     /**
-     * @param array $record
-     * @return array
+     * @return string
+     * @throws InvalidConfigurationException
      */
-    public function process(array $record)
+    public function getData()
     {
-        $record['message'] .= "\n\n"
+        if ($this->exception === null) {
+            throw new InvalidConfigurationException('Exception object not found');
+        }
+
+        $data = "\n\n"
             . "Exception:\n"
             . 'Class: ' . get_class($this->exception) . "\n"
             . 'Code: ' . $this->exception->getCode() . "\n"
             . 'Message: ' . $this->exception->getMessage() . "\n\n"
             . $this->exception->getTraceAsString() . "\n";
 
-        return $record;
+        return $data;
     }
 }

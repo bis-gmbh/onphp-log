@@ -60,9 +60,6 @@ class LoggerInstance extends AbstractLogger implements LoggerInstanceInterface
         if (empty($this->targets)) {
             $this->addTarget(new DummyTarget());
         }
-        if (empty($this->informers)) {
-            $this->addInformer(new DummyInformer());
-        }
 
         if ( ! static::$timezone) {
             static::$timezone = new \DateTimeZone(date_default_timezone_get() ?: 'UTC');
@@ -82,8 +79,10 @@ class LoggerInstance extends AbstractLogger implements LoggerInstanceInterface
             'context'  => $context,
         ];
 
-        foreach ($this->informers as $informer) {
-            $record = $informer->process($record);
+        if ( ! empty($this->informers)) {
+            foreach ($this->informers as $informer) {
+                $informer->process($record);
+            }
         }
 
         foreach ($this->targets as $target) {

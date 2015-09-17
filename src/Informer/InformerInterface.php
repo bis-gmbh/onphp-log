@@ -13,7 +13,11 @@ interface InformerInterface
 {
     /**
      * @param array $record
+     */
+    public function process(array &$record);
+
+    /**
      * @return mixed
      */
-    public function process(array $record);
+    public function getData();
 }

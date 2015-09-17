@@ -6,12 +6,13 @@
 namespace Onphp\Log\Informer;
 
 use \Onphp\HttpRequest;
+use \Onphp\Log\InvalidConfigurationException;
 
 /**
  * Class HttpRequestInformer
  * @package Onphp\Log\Informer
  */
-class HttpRequestInformer implements InformerInterface
+class HttpRequestInformer extends AbstractInformer
 {
     /**
      * @var HttpRequest
@@ -21,8 +22,9 @@ class HttpRequestInformer implements InformerInterface
     /**
      * @param HttpRequest $request
      */
-    public function __construct(HttpRequest $request)
+    public function __construct(HttpRequest $request = null)
     {
+        $this->name = 'httprequest';
         $this->setRequest($request);
     }
 
@@ -37,14 +39,18 @@ class HttpRequestInformer implements InformerInterface
     }
 
     /**
-     * @param array $record
-     * @return array
+     * @return string
+     * @throws InvalidConfigurationException
      */
-    public function process(array $record)
+    public function getData()
     {
+        if ($this->request === null) {
+            throw new InvalidConfigurationException('\Onphp\HttpRequest object not found');
+        }
+
         $server = $this->request->getServer();
-        
-        $record['message'] .= "\n\n"
+
+        $data = "\n\n"
             . 'Request:'
             . "\n_POST=" . var_export($this->request->getPost(), true)
             . "\n_GET=" . var_export($this->request->getGet(), true)
@@ -70,6 +76,6 @@ class HttpRequestInformer implements InformerInterface
                     : null
             );
 
-        return $record;
+        return $data;
     }
 }
