@@ -13,6 +13,11 @@ interface TargetInterface
 {
     /**
      * @param array $record
+     */
+    public function process(array $record);
+
+    /**
+     * @param array $record
      * @return mixed
      */
     public function write(array $record);

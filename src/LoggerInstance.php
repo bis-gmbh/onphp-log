@@ -70,7 +70,7 @@ class LoggerInstance extends AbstractLogger implements LoggerInstanceInterface
         }
 
         foreach ($this->targets as $target) {
-            $target->write($record);
+            $target->process($record);
         }
     }
 

@@ -9,7 +9,7 @@ namespace Onphp\Log\Target;
  * Class DummyTarget
  * @package Onphp\Log\Target
  */
-class DummyTarget implements TargetInterface
+class DummyTarget extends AbstractTarget
 {
     /**
      * @param array $record

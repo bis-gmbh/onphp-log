@@ -9,7 +9,7 @@ namespace Onphp\Log\Target;
  * Class EchoTarget
  * @package Onphp\Log\Target
  */
-class EchoTarget implements TargetInterface
+class EchoTarget extends AbstractTarget
 {
     /**
      * @param array $record
@@ -17,7 +17,6 @@ class EchoTarget implements TargetInterface
      */
     public function write(array $record)
     {
-        unset($record['context']);
-        echo '<pre>' . implode("\t", $record) . '</pre>';
+        echo $record['message'];
     }
 }
