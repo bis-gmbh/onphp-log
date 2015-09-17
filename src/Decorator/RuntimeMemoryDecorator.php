@@ -39,11 +39,11 @@ class RuntimeMemoryDecorator implements DecoratorInterface
 
                 $message = $file . "($line)";
                 
-                if (isset($record['context']['informer']['datetime'])) {
-                    $message .= "\n\nDate: " . $record['context']['informer']['datetime'];
-                    unset($record['context']['informer']['datetime']);
+                if (isset($record['informer']['datetime'])) {
+                    $message .= "\n\nDate: " . $record['informer']['datetime'];
+                    unset($record['informer']['datetime']);
                 }
-                $message .= "\n\nMessage: " . $record['message'] . "\n" . implode("\n", $record['context']['informer']) . "\n\n";
+                $message .= "\n\nMessage: " . $record['message'] . "\n" . implode("\n", $record['informer']) . "\n\n";
 
                 break;
             }

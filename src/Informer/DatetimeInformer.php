@@ -50,9 +50,10 @@ class DatetimeInformer extends AbstractInformer
     }
 
     /**
+     * @param array $context
      * @return string
      */
-    public function getData()
+    public function getData(array $context)
     {
         if ( ! $this->timezone instanceof \DateTimeZone) {
             $this->timezone = new \DateTimeZone(date_default_timezone_get() ?: 'UTC');

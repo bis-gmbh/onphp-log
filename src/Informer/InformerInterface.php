@@ -12,12 +12,19 @@ namespace Onphp\Log\Informer;
 interface InformerInterface
 {
     /**
-     * @param array $record
+     * @return string
      */
-    public function process(array &$record);
+    public function getName();
 
     /**
+     * @param array $context
+     * @return string
+     */
+    public function process(array $context);
+
+    /**
+     * @param array $context
      * @return mixed
      */
-    public function getData();
+    public function getData(array $context);
 }

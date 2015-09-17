@@ -17,6 +17,6 @@ class DefaultDecorator implements DecoratorInterface
      */
     public function process(array $record)
     {
-        return $record['message'] . "\n" . implode("\n", $record['context']['informer']);
+        return $record['message'] . "\n" . implode("\n", $record['informer']);
     }
 }

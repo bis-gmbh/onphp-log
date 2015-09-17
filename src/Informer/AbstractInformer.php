@@ -27,19 +27,21 @@ abstract class AbstractInformer implements InformerInterface
     }
 
     /**
-     * @param array $record
+     * @param array $context
+     * @return string
      * @throws InvalidConfigurationException
      */
-    public function process(array &$record)
+    public function process(array $context)
     {
         if (empty($this->name)) {
             throw new InvalidConfigurationException('Informer system name not defined');
         }
-        $record['context']['informer'][$this->name] = $this->getData();
+        return $this->getData($context);
     }
 
     /**
+     * @param array $context
      * @return mixed
      */
-    abstract public function getData();
+    abstract public function getData(array $context);
 }

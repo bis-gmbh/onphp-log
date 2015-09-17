@@ -65,7 +65,10 @@ class LoggerInstance extends AbstractLogger implements LoggerInstanceInterface
 
         if ( ! empty($this->informers)) {
             foreach ($this->informers as $informer) {
-                $informer->process($record);
+                $informerData = $informer->process($record['context']);
+                if ($informerData) {
+                    $record['informer'][$informer->getName()] = $informerData;
+                }
             }
         }
 
