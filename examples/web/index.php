@@ -11,14 +11,17 @@ use \Onphp\RouterUrlHelper;
 use \Onphp\HeaderUtils;
 use \Onphp\RedirectToView;
 use \Onphp\Log\LoggerInstance;
-use \Onphp\Log\Target\RuntimeMemoryTarget;
-use \Onphp\Log\Informer\ExceptionInformer;
+use \Onphp\Log\Target\EchoTarget;
+use \Onphp\Log\Informer\DatetimeInformer;
 use \Onphp\Log\Informer\HttpRequestInformer;
+use \Onphp\Log\Informer\ExceptionInformer;
+use \Onphp\Log\Decorator\RuntimeMemoryDecorator;
 
 require '../config.inc.php';
 
 $logger = new LoggerInstance('runtime');
-$logger->addTarget(new RuntimeMemoryTarget());
+$logger->addTarget(new EchoTarget(new RuntimeMemoryDecorator()));
+$logger->addInformer(new DatetimeInformer());
 
 try {
     $request =
@@ -90,7 +93,7 @@ try {
     $view->render($model);
 
     $logger->addInformer(new HttpRequestInformer($request));
-    // throw new Exception('Test exception');
+     throw new Exception('Test exception');
     $logger->info('Test info');
 
 } catch (Exception $e) {
