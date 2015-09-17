@@ -17,10 +17,6 @@ use \Onphp\Log\Informer\DummyInformer;
  */
 class LoggerInstance extends AbstractLogger implements LoggerInstanceInterface
 {
-    const INSERT_TO_BEGIN = 0x1;
-
-    const INSERT_TO_END = 0x2;
-
     /**
      * @var \DateTimeZone
      */
@@ -97,16 +93,11 @@ class LoggerInstance extends AbstractLogger implements LoggerInstanceInterface
 
     /**
      * @param TargetInterface $target
-     * @param int $position
      * @return LoggerInstance
      */
-    public function addTarget(TargetInterface $target, $position = self::INSERT_TO_END)
+    public function addTarget(TargetInterface $target)
     {
-        if ($position === self::INSERT_TO_BEGIN) {
-            array_unshift($this->targets, $target);
-        } else {
-            array_push($this->targets, $target);
-        }
+        array_push($this->targets, $target);
         return $this;
     }
 
@@ -121,16 +112,11 @@ class LoggerInstance extends AbstractLogger implements LoggerInstanceInterface
 
     /**
      * @param InformerInterface $informer
-     * @param int $position
      * @return LoggerInstance
      */
-    public function addInformer(InformerInterface $informer, $position = self::INSERT_TO_END)
+    public function addInformer(InformerInterface $informer)
     {
-        if ($position === self::INSERT_TO_BEGIN) {
-            array_unshift($this->informers, $informer);
-        } else {
-            array_push($this->informers, $informer);
-        }
+        array_push($this->informers, $informer);
         return $this;
     }
 

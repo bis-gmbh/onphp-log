@@ -94,7 +94,7 @@ try {
     $logger->info('Test info');
 
 } catch (Exception $e) {
-    $logger->addInformer(new ExceptionInformer($e), LoggerInstance::INSERT_TO_BEGIN);
+    $logger->addInformer(new ExceptionInformer($e));
 
     if (__LOCAL_DEBUG__) {
         $logger->error('Exception throwed');
