@@ -24,7 +24,7 @@ interface InformerInterface
 
     /**
      * @param array $context
-     * @return mixed
+     * @return string|null
      */
     public function getData(array $context);
 }

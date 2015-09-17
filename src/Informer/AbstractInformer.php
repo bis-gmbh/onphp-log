@@ -41,7 +41,7 @@ abstract class AbstractInformer implements InformerInterface
 
     /**
      * @param array $context
-     * @return mixed
+     * @return string|null
      */
     abstract public function getData(array $context);
 }

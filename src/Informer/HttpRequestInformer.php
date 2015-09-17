@@ -18,8 +18,7 @@ class HttpRequestInformer extends AbstractInformer
 
     /**
      * @param array $context
-     * @return string
-     * @throws InvalidConfigurationException
+     * @return string|null
      */
     public function getData(array $context)
     {

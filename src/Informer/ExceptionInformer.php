@@ -15,7 +15,7 @@ class ExceptionInformer extends AbstractInformer
 
     /**
      * @param array $context
-     * @return string
+     * @return string|null
      */
     public function getData(array $context)
     {
