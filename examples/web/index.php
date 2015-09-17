@@ -93,7 +93,7 @@ try {
     $view->render($model);
 
     $logger->addInformer(new HttpRequestInformer($request));
-     throw new Exception('Test exception');
+    // throw new Exception('Test exception');
     $logger->info('Test info');
 
 } catch (Exception $e) {
