@@ -67,7 +67,7 @@ abstract class AbstractTarget implements TargetInterface
         }
 
         if ( ! ($this->decorator instanceof DecoratorInterface)) {
-            $this->decorator = new DefaultDecorator();
+            $this->setDefaultDecorator();
         }
 
         $record['message'] = $this->decorator->process($record);
@@ -81,4 +81,12 @@ abstract class AbstractTarget implements TargetInterface
      * @return null
      */
     abstract public function write(array $record);
+
+    /**
+     * Give ability to set default decorator in child classes
+     */
+    protected function setDefaultDecorator()
+    {
+        $this->decorator = new DefaultDecorator();
+    }
 }
