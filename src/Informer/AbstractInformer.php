@@ -5,7 +5,7 @@
 
 namespace Onphp\Log\Informer;
 
-use \Onphp\Log\InvalidConfigurationException;
+use \Onphp\Log\Exception\InvalidConfigurationException;
 
 /**
  * Class AbstractInformer
