@@ -5,6 +5,8 @@
 
 namespace Onphp\Log\Decorator;
 
+use \Onphp\Log\Informer\DatetimeInformer;
+
 /**
  * Class DefaultDecorator
  * @package Onphp\Log\Decorator
@@ -17,6 +19,19 @@ class DefaultDecorator implements DecoratorInterface
      */
     public function process(array $record)
     {
-        return $record['message'] . "\n" . implode("\n", $record['informer']);
+        if (isset($record['informer']['datetime'])) {
+            $datetime = $record['informer']['datetime'];
+            unset($record['informer']['datetime']);
+        } else {
+            $datetimeInformer = new DatetimeInformer();
+            $datetime = $datetimeInformer->getData($record['context']);
+        }
+        $output = $datetime . "\t" . strtoupper($record['level']) . "\t" . $record['message'] . "\n";
+        if ( ! empty($record['informer'])) {
+            foreach ($record['informer'] as $name => $value) {
+                $output .= ucfirst($name) . ":\n" . $value . "\n";
+            }
+        }
+        return $output;
     }
 }
