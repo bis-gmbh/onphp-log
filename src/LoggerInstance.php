@@ -58,7 +58,7 @@ class LoggerInstance extends AbstractLogger implements LoggerInstanceInterface
         $context['meta']['loggerName'] = $this->name;
 
         $record = [
-            'level'    => strtoupper($level),
+            'level'    => $level,
             'message'  => $message,
             'context'  => $context,
         ];

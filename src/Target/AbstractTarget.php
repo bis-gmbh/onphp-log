@@ -5,8 +5,10 @@
 
 namespace Onphp\Log\Target;
 
+use \Psr\Log\LogLevel;
 use \Onphp\Log\Decorator\DecoratorInterface;
 use \Onphp\Log\Decorator\DefaultDecorator;
+use \Onphp\Log\InternalLevel;
 
 /**
  * Class AbstractTarget
@@ -25,13 +27,16 @@ abstract class AbstractTarget implements TargetInterface
     protected $decorator;
 
     /**
-     * @param DecoratorInterface|null $decorator
+     * @var integer
      */
-    public function __construct(DecoratorInterface $decorator = null)
+    protected $minProcessingLevel;
+
+    /**
+     * @param string $level
+     */
+    public function __construct($level = LogLevel::DEBUG)
     {
-        if ($decorator instanceof DecoratorInterface) {
-            $this->setDecorator($decorator);
-        }
+        $this->minProcessingLevel = InternalLevel::get($level);
     }
 
     /**
@@ -52,14 +57,23 @@ abstract class AbstractTarget implements TargetInterface
 
     /**
      * @param array $record
+     * @return bool
      */
     public function process(array $record)
     {
+        $recordLevel = InternalLevel::get($record['level']);
+        if ($recordLevel < $this->minProcessingLevel) {
+            return false;
+        }
+
         if ( ! ($this->decorator instanceof DecoratorInterface)) {
             $this->decorator = new DefaultDecorator();
         }
+
         $record['message'] = $this->decorator->process($record);
         $this->write($record);
+
+        return true;
     }
 
     /**

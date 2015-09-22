@@ -13,6 +13,7 @@ interface TargetInterface
 {
     /**
      * @param array $record
+     * @return bool
      */
     public function process(array $record);
 
