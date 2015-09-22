@@ -7,7 +7,7 @@ namespace Onphp\Log;
 
 use \Psr\Log\AbstractLogger;
 use \Onphp\Log\Target\TargetInterface;
-use \Onphp\Log\Target\DummyTarget;
+use \Onphp\Log\Target\StreamTarget;
 use \Onphp\Log\Informer\InformerInterface;
 
 /**
@@ -52,7 +52,7 @@ class LoggerInstance extends AbstractLogger implements LoggerInstanceInterface
     public function log($level, $message, array $context = [])
     {
         if (empty($this->targets)) {
-            $this->addTarget(new DummyTarget());
+            $this->addTarget(new StreamTarget('php://stderr'));
         }
 
         $context['meta']['loggerName'] = $this->name;
