@@ -20,10 +20,13 @@ use \Onphp\Log\Decorator\RuntimeMemoryDecorator;
 require '../config.inc.php';
 
 $logger = new LoggerInstance('runtime');
-$logger->addTarget(new EchoTarget(new RuntimeMemoryDecorator()));
 $logger->addInformer(new DatetimeInformer());
 $logger->addInformer(new HttpRequestInformer());
 $logger->addInformer(new ExceptionInformer());
+
+$echoTarget = new EchoTarget();
+$echoTarget->setDecorator(new RuntimeMemoryDecorator());
+$logger->addTarget($echoTarget);
 
 try {
     $request =
