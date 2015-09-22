@@ -11,7 +11,7 @@ use \Onphp\RouterUrlHelper;
 use \Onphp\HeaderUtils;
 use \Onphp\RedirectToView;
 use \Onphp\Log\LoggerInstance;
-use \Onphp\Log\Target\EchoTarget;
+use \Onphp\Log\Target\StreamTarget;
 use \Onphp\Log\Informer\DatetimeInformer;
 use \Onphp\Log\Informer\HttpRequestInformer;
 use \Onphp\Log\Informer\ExceptionInformer;
@@ -19,16 +19,12 @@ use \Onphp\Log\Decorator\RuntimeMemoryDecorator;
 
 require '../config.inc.php';
 
-$logger = new LoggerInstance('runtime');
-$logger->addInformer(new DatetimeInformer());
-$logger->addInformer(new HttpRequestInformer());
-$logger->addInformer(new ExceptionInformer());
-
-$echoTarget = new EchoTarget();
-$echoTarget->setDecorator(new RuntimeMemoryDecorator());
-$logger->addTarget($echoTarget);
-
 try {
+    $logger = new LoggerInstance('runtime');
+    $logger->addInformer(new HttpRequestInformer());
+    $logger->addInformer(new ExceptionInformer());
+    $logger->addTarget(new StreamTarget('/tmp/example.log'));
+
     $request =
         HttpRequest::create()->
         setGet($_GET)->
@@ -101,7 +97,7 @@ try {
 
     //throw new Exception('Test exception');
 
-} catch (Exception $e) {
+} catch (\Exception $e) {
     if (__LOCAL_DEBUG__) {
         $logger->error('Exception throwed', ['exception' => $e]);
     }
