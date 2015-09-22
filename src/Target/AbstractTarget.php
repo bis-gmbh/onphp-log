@@ -49,10 +49,12 @@ abstract class AbstractTarget implements TargetInterface
 
     /**
      * @param DecoratorInterface $decorator
+     * @return TargetInterface
      */
     public function setDecorator(DecoratorInterface $decorator)
     {
         $this->decorator = $decorator;
+        return $this;
     }
 
     /**
