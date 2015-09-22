@@ -32,9 +32,7 @@ class HttpRequestInformer extends AbstractInformer
 
             $server = $request->getServer();
     
-            $data = "\n\n"
-                . 'Request:'
-                . "\n_POST=" . var_export($request->getPost(), true)
+            $data = "_POST=" . var_export($request->getPost(), true)
                 . "\n_GET=" . var_export($request->getGet(), true)
                 . "\n_COOKIE=" . var_export($request->getCookie(), true)
                 . (

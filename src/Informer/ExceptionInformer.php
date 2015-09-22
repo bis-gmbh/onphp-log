@@ -27,12 +27,10 @@ class ExceptionInformer extends AbstractInformer
         ) {
             /** @var \Exception $e */
             $e = $context[$this->name];
-            $data = "\n\n"
-                . "Exception:\n"
-                . 'Class: ' . get_class($e) . "\n"
+            $data = 'Class: ' . get_class($e) . "\n"
                 . 'Code: ' . $e->getCode() . "\n"
-                . 'Message: ' . $e->getMessage() . "\n\n"
-                . $e->getTraceAsString() . "\n";
+                . 'Message: ' . $e->getMessage() . "\n"
+                . $e->getTraceAsString();
         }
 
         return $data;
