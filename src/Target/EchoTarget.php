@@ -17,6 +17,6 @@ class EchoTarget extends AbstractTarget
      */
     public function write(array $record)
     {
-        echo $record['message'];
+        echo $record['decorated'];
     }
 }

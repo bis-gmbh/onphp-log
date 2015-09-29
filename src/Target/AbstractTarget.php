@@ -72,7 +72,7 @@ abstract class AbstractTarget implements TargetInterface
             $this->setDefaultDecorator();
         }
 
-        $record['message'] = $this->decorator->process($record);
+        $record['decorated'] = $this->decorator->process($record);
         $this->write($record);
 
         return true;

@@ -57,7 +57,7 @@ class StreamTarget extends AbstractTarget
             if ( ! is_resource($this->stream)) {
                 $this->stream = fopen($this->filename, 'a');
             }
-            fwrite($this->stream, $record['message']);
+            fwrite($this->stream, $record['decorated']);
         } catch (\Exception $e) {
             $this->stream = null;
             throw new RuntimeException(sprintf(
