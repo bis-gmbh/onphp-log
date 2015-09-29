@@ -8,6 +8,7 @@ namespace Onphp\Log\Target;
 use \Psr\Log\LogLevel;
 use \Onphp\Log\Exception\InvalidArgumentException;
 use \Onphp\Log\Exception\RuntimeException;
+use \Onphp\Log\Decorator\StreamDecorator;
 
 /**
  * Class StreamTarget
@@ -44,6 +45,8 @@ class StreamTarget extends AbstractTarget
         } else {
             throw new InvalidArgumentException('Invalid type');
         }
+
+        $this->setDecorator(new StreamDecorator());
     }
 
     /**

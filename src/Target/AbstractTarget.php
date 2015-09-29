@@ -7,7 +7,7 @@ namespace Onphp\Log\Target;
 
 use \Psr\Log\LogLevel;
 use \Onphp\Log\Decorator\DecoratorInterface;
-use \Onphp\Log\Decorator\DefaultDecorator;
+use \Onphp\Log\Decorator\DummyDecorator;
 use \Onphp\Log\InternalLevel;
 
 /**
@@ -89,6 +89,6 @@ abstract class AbstractTarget implements TargetInterface
      */
     protected function setDefaultDecorator()
     {
-        $this->decorator = new DefaultDecorator();
+        $this->decorator = new DummyDecorator();
     }
 }

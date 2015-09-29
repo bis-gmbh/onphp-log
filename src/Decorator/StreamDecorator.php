@@ -8,10 +8,10 @@ namespace Onphp\Log\Decorator;
 use \Onphp\Log\Informer\DatetimeInformer;
 
 /**
- * Class DefaultDecorator
+ * Class StreamDecorator
  * @package Onphp\Log\Decorator
  */
-class DefaultDecorator implements DecoratorInterface
+class StreamDecorator implements DecoratorInterface
 {
     /**
      * @param array $record
