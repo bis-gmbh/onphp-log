@@ -19,10 +19,30 @@ define('PATH_EXAMPLES', PATH_ROOT . 'examples' . DIRECTORY_SEPARATOR);
 
 define('PATH_TEMPLATES', PATH_EXAMPLES . 'templates' . DIRECTORY_SEPARATOR);
 
+define('PATH_CLASSES', PATH_BASE . 'classes' . DIRECTORY_SEPARATOR);
+
 require PATH_VENDOR . 'autoload.php';
 
 // onPHP init
 require PATH_ONPHP . 'global.inc.php.tpl';
+$onphpAutoloader = \Onphp\AutoloaderPool::get('onPHP');
+$onphpAutoloader->addPaths([
+    PATH_CLASSES . 'Auto' . DIRECTORY_SEPARATOR . 'Business' . DIRECTORY_SEPARATOR,
+    PATH_CLASSES . 'Auto' . DIRECTORY_SEPARATOR . 'DAOs' . DIRECTORY_SEPARATOR,
+    PATH_CLASSES . 'Auto' . DIRECTORY_SEPARATOR . 'Proto' . DIRECTORY_SEPARATOR,
+    PATH_CLASSES . 'Business' . DIRECTORY_SEPARATOR,
+    PATH_CLASSES . 'DAOs' . DIRECTORY_SEPARATOR,
+    PATH_CLASSES . 'Proto' . DIRECTORY_SEPARATOR,
+], 'Onphp\Log\Examples');
+
+// Db init
+$db = \Onphp\DB::spawn('\Onphp\MySQLim', 'onphp_log', 'onphp_log', '127.0.0.1', 'onphp_log')->
+    setPersistent(false)->
+    setEncoding('utf8')->
+    setNeedAutoCommit(true);
+\Onphp\DBPool::me()->
+    addLink('onphp_log', $db)->
+    setDefault($db);
 
 define('__LOCAL_DEBUG__', true);
 define('BUGLOVERS', 'mailbox@example.net');

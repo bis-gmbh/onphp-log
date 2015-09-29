@@ -12,10 +12,10 @@ use \Onphp\HeaderUtils;
 use \Onphp\RedirectToView;
 use \Onphp\Log\LoggerInstance;
 use \Onphp\Log\Target\StreamTarget;
-use \Onphp\Log\Informer\DatetimeInformer;
+use \Onphp\Log\Target\OnphpDAOTarget;
 use \Onphp\Log\Informer\HttpRequestInformer;
 use \Onphp\Log\Informer\ExceptionInformer;
-use \Onphp\Log\Decorator\RuntimeMemoryDecorator;
+use \Onphp\Log\Examples\Log;
 
 require '../config.inc.php';
 
@@ -24,6 +24,7 @@ try {
     $logger->addInformer(new HttpRequestInformer());
     $logger->addInformer(new ExceptionInformer());
     $logger->addTarget(new StreamTarget('/tmp/example.log'));
+    $logger->addTarget(new OnphpDAOTarget(Log::create()));
 
     $request =
         HttpRequest::create()->

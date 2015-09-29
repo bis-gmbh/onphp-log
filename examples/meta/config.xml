@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE metaconfiguration SYSTEM "meta.dtd">
+
+<metaconfiguration>
+
+	<classes namespace="\Onphp\Log\Examples">
+
+		<class name="Log" type="final">
+
+			<properties>
+				<identifier type="Integer" />
+
+				<property name="date" type="Timestamp" required="true" />
+				<property name="level" type="Integer" required="true" />
+				<property name="message" type="String" size="5000" required="true" />
+
+			</properties>
+
+			<pattern name="StraightMapping" />
+
+		</class>
+
+	</classes>
+
+</metaconfiguration>
