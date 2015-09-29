@@ -9,15 +9,30 @@ use \Psr\Log\LogLevel;
 use \Onphp\Log\Exception\InvalidArgumentException;
 use \Onphp\DAOConnected;
 use \Onphp\Log\InternalLevel;
-use \Onphp\Log\Decorator\DummyDecorator;
 use \Onphp\Timestamp;
 
 /**
  * Class OnphpDAOTarget
+ * 
+ * Should work with Log class meta configuration, described like this:
+ * 
+ * <class name="Log" type="final">
+ *       <properties>
+ *           <identifier type="Integer" />
+ *           <property name="date" type="Timestamp" required="true" />
+ *           <property name="level" type="Integer" required="true" />
+ *           <property name="message" type="String" size="5000" required="true" />
+ *       </properties>
+ *       <pattern name="StraightMapping" />
+ *   </class>
+ * 
  * @package Onphp\Log\Target
  */
 class OnphpDAOTarget extends AbstractTarget
 {
+    /**
+     * @var null|DAOConnected
+     */
     protected $object = null;
 
     /**
