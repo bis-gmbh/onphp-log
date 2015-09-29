@@ -20,7 +20,6 @@
       "role": "Developer"
     }
   ],
-  "minimum-stability": "dev",
   "repositories": [
     {
       "type": "package",
@@ -40,6 +39,7 @@
   ],
   "require": {
     "php": ">=5.4.0",
+    "psr/log": "~1.0",
     "bis-gmbh/onphp": "1.0.10.99"
   },
   "autoload": {

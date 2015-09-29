@@ -12,6 +12,7 @@ Thumbs.db
 # composer
 /vendor
 composer.phar
+composer.lock
 
 # phpunit
 phpunit.phar
