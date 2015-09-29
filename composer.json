@@ -43,8 +43,9 @@
     "bis-gmbh/onphp": "1.0.10.99"
   },
   "autoload": {
-    "classmap": [
-      "src/"
-    ]
+    "psr-4": {
+      "Onphp\\Log\\": "src/",
+      "Onphp\\Log\\Examples\\": "examples/"
+    }
   }
 }
