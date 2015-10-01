@@ -47,7 +47,7 @@ class InternalLevel extends LogLevel
      * @return string
      * @throws InvalidArgumentException
      */
-    public function name($id)
+    public static function name($id)
     {
         if (in_array(intval($id), self::$level)) {
             return array_search($id, self::$level);
