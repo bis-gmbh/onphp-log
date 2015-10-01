@@ -41,4 +41,18 @@ class InternalLevel extends LogLevel
             throw new InvalidArgumentException('Level "' . (string)$value . '" not found');
         }
     }
+
+    /**
+     * @param integer $id
+     * @return string
+     * @throws InvalidArgumentException
+     */
+    public static function name($id)
+    {
+        if (in_array(intval($id), self::$level)) {
+            return array_search($id, self::$level);
+        } else {
+            throw new InvalidArgumentException('Name for level id = ' . (string)$id . ' not found');
+        }
+    }
 }
