@@ -6,18 +6,7 @@
   "authors": [
     {
       "name": "Dmitry Nezhelskoy",
-      "email": "dmitry@nezhelskoy.pro",
-      "role": "Maintainer and Developer"
-    },
-    {
-      "name": "Denis Gabaidulin",
-      "email": "sherman@oemdesign.ru",
-      "role": "Developer"
-    },
-    {
-      "name": "Dmitry Demidov",
-      "email": "Dmitry.Demidov@noussoft.com",
-      "role": "Developer"
+      "email": "dmitry@nezhelskoy.pro"
     }
   ],
   "repositories": [
