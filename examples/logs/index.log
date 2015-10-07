@@ -1,0 +1,22 @@
+2015-10-07 14:49:04	INFO	Test info
+Httprequest:
+_POST=array (
+)
+_GET=array (
+)
+_COOKIE=array (
+)
+REQUEST_METHOD='GET'
+REMOTE_ADDR='127.0.0.1'
+HTTP_USER_AGENT='Mozilla/5.0 (X11; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0 Iceweasel/41.0.1'
+2015-10-07 14:55:23	INFO	Test info
+Httprequest:
+_POST=array (
+)
+_GET=array (
+)
+_COOKIE=array (
+)
+REQUEST_METHOD='GET'
+REMOTE_ADDR='127.0.0.1'
+HTTP_USER_AGENT='Mozilla/5.0 (X11; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0 Iceweasel/41.0.1'

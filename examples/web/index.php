@@ -12,7 +12,7 @@ try {
     $logger = new LoggerInstance('runtime');
     $logger->addInformer(new HttpRequestInformer());
     $logger->addInformer(new ExceptionInformer());
-    $logger->addTarget(new StreamTarget('/tmp/example.log'));
+    $logger->addTarget(new StreamTarget(PATH_LOGS . 'index.log'));
     $logger->addTarget(new OnphpDAOTarget(Log::create()));
 
     $request =
