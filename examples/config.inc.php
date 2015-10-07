@@ -21,6 +21,8 @@ define('PATH_TEMPLATES', PATH_EXAMPLES . 'templates' . DIRECTORY_SEPARATOR);
 
 define('PATH_CLASSES', PATH_BASE . 'classes' . DIRECTORY_SEPARATOR);
 
+define('PATH_LOGS', PATH_EXAMPLES . 'logs' . DIRECTORY_SEPARATOR);
+
 require PATH_VENDOR . 'autoload.php';
 
 // onPHP init
