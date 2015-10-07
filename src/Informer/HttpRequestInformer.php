@@ -36,8 +36,22 @@ class HttpRequestInformer extends AbstractInformer
                 . "\n_GET=" . var_export($request->getGet(), true)
                 . "\n_COOKIE=" . var_export($request->getCookie(), true)
                 . (
+                    isset($server['REQUEST_METHOD'])
+                        ?
+                            "\nREQUEST_METHOD="
+                            . var_export($server['REQUEST_METHOD'], true)
+                        : null
+                )
+                . (
+                    isset($server['REMOTE_ADDR'])
+                        ?
+                            "\nREMOTE_ADDR="
+                            . var_export($server['REMOTE_ADDR'], true)
+                        : null
+                )
+                . (
                     isset($server['HTTP_REFERER'])
-                        ? 
+                        ?
                             "\nREFERER="
                             . var_export($server['HTTP_REFERER'], true)
                         : null
