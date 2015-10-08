@@ -46,5 +46,19 @@ $db = \Onphp\DB::spawn('\Onphp\MySQLim', 'onphp_log', 'onphp_log', '127.0.0.1', 
     addLink('onphp_log', $db)->
     setDefault($db);
 
+\Onphp\Log\LoggerRepository::add([
+    new \Onphp\Log\LoggerInstance(
+        'runtime',
+        [
+            new \Onphp\Log\Target\StreamTarget(PATH_LOGS . 'index.log'),
+            new \Onphp\Log\Target\OnphpDAOTarget(\Onphp\Log\Examples\Log::create()),
+        ],
+        [
+            new \Onphp\Log\Informer\ExceptionInformer(),
+            new \Onphp\Log\Informer\HttpRequestInformer(),
+        ]
+    ),
+]);
+
 define('__LOCAL_DEBUG__', true);
 define('BUGLOVERS', 'mailbox@example.net');
