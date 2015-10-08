@@ -1,22 +1,16 @@
 <?php
-
-use \Onphp\Log\LoggerInstance;
-use \Onphp\Log\Target\StreamTarget;
-use \Onphp\Log\Target\OnphpDAOTarget;
-use \Onphp\Log\Informer\HttpRequestInformer;
-use \Onphp\Log\Informer\ExceptionInformer;
+/**
+ * @var \Onphp\Log\LoggerInstance $logger
+ */
 
 require '../config.inc.php';
 
-try {
-    $logger = new LoggerInstance('runtime');
-    $logger->addInformer(new HttpRequestInformer());
-    $logger->addInformer(new ExceptionInformer());
-    $logger->addTarget(new StreamTarget(PATH_LOGS . 'index.log'));
-    $logger->addTarget(new OnphpDAOTarget(Log::create()));
+$logger = \Onphp\Log\LoggerRepository::get('runtime');
 
-    $request =
-        HttpRequest::create()->
+$request = HttpRequest::create();
+
+try {
+    $request->
         setGet($_GET)->
         setPost($_POST)->
         setCookie($_COOKIE)->
@@ -85,11 +79,14 @@ try {
 
     $logger->info('Test info', ['httprequest' => $request]);
 
-    //throw new Exception('Test exception');
+    throw new Exception('Test exception');
 
 } catch (\Exception $e) {
     if (__LOCAL_DEBUG__) {
-        $logger->error('Exception throwed', ['exception' => $e]);
+        $logger->error('Exception throwed', [
+            'httprequest' => $request,
+            'exception' => $e,
+        ]);
     }
     else {
         if (!HeaderUtils::redirectBack()) {
