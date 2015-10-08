@@ -25,4 +25,9 @@ interface LoggerInstanceInterface
      * @return mixed
      */
     public function addInformer(InformerInterface $informer);
+
+    /**
+     * @return string
+     */
+    public function getName();
 }

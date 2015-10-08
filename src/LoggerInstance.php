@@ -9,6 +9,7 @@ use \Psr\Log\AbstractLogger;
 use \Onphp\Log\Target\TargetInterface;
 use \Onphp\Log\Target\StreamTarget;
 use \Onphp\Log\Informer\InformerInterface;
+use \Onphp\Log\Exception\InvalidArgumentException;
 
 /**
  * Class LoggerInstance
@@ -112,6 +113,30 @@ class LoggerInstance extends AbstractLogger implements LoggerInstanceInterface
     public function flushInformers()
     {
         $this->informers = [];
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $newName
+     * @return LoggerInstance
+     * @throws InvalidArgumentException
+     */
+    public function rename($newName)
+    {
+        if (is_string($newName) && ! empty($newName)) {
+            $this->name = $newName;
+        } else {
+            throw new InvalidArgumentException('Argument type must be not empty string');
+        }
+
         return $this;
     }
 }
