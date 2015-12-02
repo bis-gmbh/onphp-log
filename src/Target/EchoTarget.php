@@ -17,6 +17,6 @@ class EchoTarget extends AbstractTarget
      */
     public function write(array $record)
     {
-        echo $record['decorated'];
+        echo $record['decorated'] . PHP_EOL;
     }
 }
