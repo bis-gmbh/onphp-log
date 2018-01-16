@@ -2,23 +2,21 @@
   "name": "bis-gmbh/onphp-log",
   "description": "Onphp Log Package",
   "keywords": ["onphp", "log"],
+  "type": "library",
   "license": "BSD-3-Clause",
   "authors": [
     {
-      "name": "Dmitry Nezhelskoy",
+      "name": "Dmitry A. Nezhelskoy",
       "email": "dmitry@nezhelskoy.pro"
-    }
-  ],
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/bis-gmbh/onphp-framework"
     }
   ],
   "require": {
     "php": ">=5.4.0",
-    "psr/log": "~1.0",
-    "bis-gmbh/onphp": "dev-masterNs"
+    "bis-gmbh/onphp": "^2.0",
+    "psr/log": "~1.0"
+  },
+  "config": {
+    "sort-packages": true
   },
   "autoload": {
     "psr-4": {
