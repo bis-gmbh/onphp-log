@@ -23,7 +23,7 @@ class ExceptionInformer extends AbstractInformer
 
         if (
             isset($context[$this->name])
-            && ($context[$this->name] instanceof \Exception)
+            && ($context[$this->name] instanceof \Throwable)
         ) {
             /** @var \Exception $e */
             $e = $context[$this->name];
